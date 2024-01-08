@@ -1,6 +1,6 @@
 {
-  "name": "numeral",
-  "version": "2.0.6",
+  "name": "@yiliang114/numeral",
+  "version": "2.0.7",
   "description": "Format and manipulate numbers.",
   "homepage": "http://numeraljs.com",
   "author": {
@@ -48,7 +48,8 @@
     "karma-sauce-launcher": "^1.1.0",
     "load-grunt-tasks": "^3.5.2",
     "mocha": "^3.1.2",
-    "uglify-js": "latest"
+    "uglify-js": "latest",
+    "grunt-cli": "^1.4.3"
   },
   "scripts": {
     "test": "grunt"
