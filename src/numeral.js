@@ -1,6 +1,6 @@
 /*! @preserve
  * numeral.js
- * version : 2.0.7
+ * version : 2.0.7-beta
  * author : Adam Draper
  * license : MIT
  * http://adamwdraper.github.com/Numeral-js/
@@ -21,7 +21,7 @@
 
   var numeral,
     _,
-    VERSION = '2.0.7',
+    VERSION = "2.0.7-beta",
     formats = {},
     locales = {},
     defaults = {
@@ -109,10 +109,14 @@
         optDec = false,
         leadingCount = 0,
         abbr = "",
-        trillion = 1000000000000,
-        billion = 1000000000,
-        million = 1000000,
-        thousand = 1000,
+        trillion = 1000000000000, // 兆
+        tenBillion = 10000000000, // 百亿
+        billion = 1000000000, // 十亿
+        aHundredMillion = 100000000, // 亿
+        tenMillion = 10000000, // 千万
+        million = 1000000, // 百万
+        tenThousand = 10000, // 万
+        thousand = 1000, // 千
         decimal = "",
         neg = false,
         abbrForce, // force abbreviation
@@ -166,21 +170,45 @@
           abbr += locale.abbreviations.trillion;
           value = value / trillion;
         } else if (
-          (abs < trillion && abs >= billion && !abbrForce) ||
+          (locale.abbreviations.tenBillion && abs < trillion && abs >= tenBillion && !abbrForce)
+        ) {
+          // tenBillion
+          abbr += locale.abbreviations.tenBillion;
+          value = value / tenBillion;
+        } else if (
+          (locale.abbreviations.billion && abs < trillion && abs >= billion && !abbrForce) ||
           abbrForce === "b"
         ) {
           // billion
           abbr += locale.abbreviations.billion;
           value = value / billion;
         } else if (
-          (abs < billion && abs >= million && !abbrForce) ||
+          (locale.abbreviations.aHundredMillion && abs < billion && abs >= aHundredMillion && !abbrForce)
+        ) {
+          // aHundredMillion
+          abbr += locale.abbreviations.aHundredMillion;
+          value = value / aHundredMillion;
+        } else if (
+          (locale.abbreviations.tenMillion && abs < aHundredMillion && abs >= tenMillion && !abbrForce)
+        ) {
+          // tenMillion
+          abbr += locale.abbreviations.tenMillion;
+          value = value / tenMillion;
+        } else if (
+          (locale.abbreviations.million && abs < billion && abs >= million && !abbrForce) ||
           abbrForce === "m"
         ) {
           // million
           abbr += locale.abbreviations.million;
           value = value / million;
         } else if (
-          (abs < million && abs >= thousand && !abbrForce) ||
+          (locale.abbreviations.tenThousand && abs < million && abs >= tenThousand && !abbrForce)
+        ) {
+          // tenThousand
+          abbr += locale.abbreviations.tenThousand;
+          value = value / tenThousand;
+        } else if (
+          (locale.abbreviations.thousand && abs < million && abs >= thousand && !abbrForce) ||
           abbrForce === "k"
         ) {
           // thousand

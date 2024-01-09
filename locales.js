@@ -1,6 +1,6 @@
 /*! @preserve
  * numeral.js
- * locales : 2.0.7
+ * locales : 2.0.7-beta
  * license : MIT
  * http://adamwdraper.github.com/Numeral-js/
  */
@@ -53,10 +53,13 @@
             decimal: '.'
         },
         abbreviations: {
-            thousand: '千',
-            million: '百万',
-            billion: '十亿',
-            trillion: '兆'
+          tenThousand: '万',
+          million: '百万',
+          tenMillion: '千万',
+          aHundredMillion: "亿",
+          billion: '十亿',
+          tenBillion: '百亿',
+          trillion: '兆',
         },
         ordinal: function (number) {
             return '.';
