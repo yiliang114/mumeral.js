@@ -1,6 +1,6 @@
 {
   "name": "@yiliang114/numeral",
-  "version": "2.0.7-beta",
+  "version": "2.0.8",
   "description": "Format and manipulate numbers.",
   "homepage": "http://numeraljs.com",
   "author": {
@@ -17,6 +17,7 @@
     "percentage"
   ],
   "main": "./numeral.js",
+  "typings": "./numeral.d.ts",
   "engines": {
     "node": "*"
   },
